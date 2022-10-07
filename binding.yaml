@@ -1,0 +1,9 @@
+#  To asign a node to an existing pod, you create a binding object and send a post request to the pod's binding API.
+apiVersion: v1
+kind: Binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02

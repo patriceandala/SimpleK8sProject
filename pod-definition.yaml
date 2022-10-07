@@ -1,0 +1,13 @@
+#yaml insists that you use spaces rather yhan tabs
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper0pod
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: ["sleep2.0"] #can be used as the entrypoint in the container
+      args: ["10"]
