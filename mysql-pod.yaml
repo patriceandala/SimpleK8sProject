@@ -1,0 +1,27 @@
+#yaml insists that you use spaces rather than tabs
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: mysql
+      image: mysql:5
+      env: #these will be environment variables used in the containers
+        - name: MYSQL_ROOT_PASSWORD
+          value: password #you should use secrets instead
+        - name: MYSQL_DATABASE
+          value: my_db
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: database
+spec:
+  selector:
+    app: myapp
+  ports:
+    - port: 3306
+  type: ClusterIP
